@@ -67,7 +67,65 @@ body, nav, .service-card, .skill-card, .project-card, .contact-form,
   transition: background .35s ease, color .35s ease, border-color .35s ease,
               background-color .35s ease;
 }
-
+/* ── PROJECTS ── */
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .project-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+  .project-frame-wrapper {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background: var(--bg3);
+    overflow: hidden;
+  }
+  .project-frame-wrapper iframe {
+    width: 200%;
+    height: 200%;
+    border: none;
+    transform: scale(0.5);
+    transform-origin: top left;
+    pointer-events: none;
+  }
+  .frame-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, var(--surface) 100%);
+  }
+  .frame-overlay-top {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .project-info { padding: 1.25rem 1.25rem 1.25rem; }
+  .project-url {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--teal-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .project-link:hover { color: var(--purple-light); }
+  .project-link svg { width: 12px; height: 12px; }
 /* ─── THEME TOGGLE BUTTON ─── */
 .theme-toggle {
   width: 52px; height: 28px;
@@ -462,7 +520,7 @@ section { padding: 6rem 3rem; }
 .t-desc { font-size: .88rem; color: var(--muted); line-height: 1.6; }
 
 /* ─── PORTFOLIO / PROJECTS ─── */
-#portfolio { background: var(--bg); }
+#projects { background: var(--bg); }
 .project-filters {
   display: flex; gap: .8rem; margin-bottom: 2.5rem; flex-wrap: wrap;
 }
@@ -601,7 +659,78 @@ section { padding: 6rem 3rem; }
   box-shadow: 0 0 30px var(--glow);
 }
 .btn-submit:hover { opacity: .85; transform: translateY(-1px); }
+ /* ── CONTACT ── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .contact-item:hover { border-color: var(--border2); }
+  .contact-icon {
+    width: 38px; height: 38px;
+    border-radius: 9px;
+    background: rgba(124,58,237,0.12);
+    border: 1px solid rgba(124,58,237,0.25);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+  .contact-item-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+  .contact-item-value { font-size: 14px; color: var(--text); font-weight: 500; }
+  .contact-item-value a { color: var(--teal-light); text-decoration: none; }
+  .contact-item-value a:hover { color: var(--purple-light); }
 
+  /* FORM */
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: 12px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; }
+  .form-input, .form-textarea {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 16px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--purple-light); }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--text3); }
+  .form-textarea { height: 130px; }
+  .form-submit {
+    background: linear-gradient(135deg, var(--purple), var(--teal-dark));
+    color: red;
+    border: none;
+    padding: 13px 32px;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+    align-self: flex-start;
+  }
+  .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+  .form-success {
+    display: 1px solid red;
+    background: rgba(13,148,136,0.12);
+    border: 1px solid red;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--teal-light);
+  }
 /* ─── FOOTER ─── */
 footer {
   border-top: 1px solid var(--border);
@@ -706,12 +835,12 @@ footer {
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#home" class="nav-logo">SD<span>.</span></a>
+  <a href="#home" class="nav-logo">SDD<span>.</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#resume">Resume</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#portfolio">Projects</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -740,12 +869,12 @@ footer {
       Passionate about clean code, intuitive UI, and solving real-world problems through technology.
     </p>
     <div class="hero-actions">
-      <a href="#portfolio" class="btn-primary">View My Work →</a>
+      <a href="#projects" class="btn-primary">View My Work →</a>
       <a href="#contact" class="btn-secondary">Get In Touch</a>
     </div>
     <div class="hero-stats">
       <div>
-        <div class="stat-val">2<span>+</span></div>
+        <div class="stat-val">3<span>+</span></div>
         <div class="stat-label">Years Exp.</div>
       </div>
       <div>
@@ -761,10 +890,10 @@ footer {
 
   <!-- Floating Social -->
   <div class="hero-social">
-    <a class="social-link" href="#" title="GitHub">GH</a>
+    <!-- <a class="social-link" href="#" title="GitHub">GH</a> -->
     <a class="social-link" href="#" title="LinkedIn">in</a>
-    <a class="social-link" href="#" title="Twitter">𝕏</a>
-    <a class="social-link" href="#" title="Instagram">IG</a>
+    <!-- <a class="social-link" href="#" title="Twitter">𝕏</a>
+    <a class="social-link" href="#" title="Instagram">IG</a> -->
   </div>
 </section>
 
@@ -783,9 +912,11 @@ footer {
         <h2 class="section-title fade-up delay-1">About <span class="gradient-text">Me</span></h2>
         <p class="section-subtitle fade-up delay-2">
           <!-- ✏️ EDIT YOUR BIO HERE -->
-          Hey! I'm Shubham Dhire, a passionate Full Stack Developer based in Pune, India. 
-          I love building clean, scalable web applications and turning ideas into elegant digital products.
-          I'm driven by curiosity, collaboration, and the desire to make a real impact through tech.
+         I'm a Frontend & WordPress Developer based in Pune, Maharashtra, with over 3 years of hands-on experience building high-performance, SEO-driven websites for B2B companies, startups, and media brands.
+
+My work sits at the intersection of clean code, conversion optimization, and search performance. I've led development teams, improved site speeds by up to 30%, and consistently delivered measurable results in traffic and engagement.
+
+Whether it's a landing page, a complex B2B publication platform, or a custom WordPress theme — I bring both technical depth and design sensibility to every project.
         </p>
         <div class="info-pills fade-up delay-2">
           <div class="info-pill">
@@ -794,7 +925,7 @@ footer {
           </div>
           <div class="info-pill">
             <div class="info-pill-label">Email</div>
-            <div class="info-pill-value"><!-- ✏️ your@email.com -->your@email.com</div>
+            <div class="info-pill-value">dhireshubham9921@gmail.com</div>
           </div>
           <div class="info-pill">
             <div class="info-pill-label">Location</div>
@@ -923,105 +1054,136 @@ footer {
 </section>
 
 <!-- PORTFOLIO / PROJECTS -->
-<section id="portfolio">
-  <div class="container">
-    <p class="section-tag fade-up">My Work</p>
-    <h2 class="section-title fade-up delay-1">Featured <span class="gradient-text">Projects</span></h2>
-    <div class="project-filters fade-up delay-2">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="web">Web App</button>
-      <button class="filter-btn" data-filter="mobile">Mobile</button>
-      <button class="filter-btn" data-filter="backend">Backend</button>
+ <section id="projects">
+    <div class="fade-in">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">Live <span>Projects</span></h2>
     </div>
-    <div class="projects-grid">
-      <!-- ✏️ EDIT PROJECTS BELOW — change data-cat to: web / mobile / backend -->
-      <div class="project-card fade-up" data-cat="web">
-        <div class="project-thumb" style="background:linear-gradient(135deg,#1a1a2e,#6c63ff22)">
-          <div class="project-thumb-inner" style="font-size:3.5rem">🛒</div>
+    <div class="projects-grid fade-in">
+
+      <div class="project-card">
+        <div class="project-frame-wrapper">
+          <iframe src="https://godspeedracing.in/" title="Godspeed Racing" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="frame-overlay"></div>
+          <div class="frame-overlay-top" onclick="window.open('https://godspeedracing.in/','_blank')"></div>
         </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Node.js</span><span class="project-tag">MongoDB</span></div>
-          <div class="project-name">E-Commerce Platform</div>
-          <div class="project-desc">A full-stack e-commerce app with product listings, cart, authentication, and Stripe payments.</div>
-          <div class="project-links">
-            <a class="proj-link" href="#">↗ Live Demo</a>
-            <a class="proj-link" href="#">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-      <div class="project-card fade-up delay-1" data-cat="web">
-        <div class="project-thumb" style="background:linear-gradient(135deg,#1a2e1a,#43e97b22)">
-          <div class="project-thumb-inner" style="font-size:3.5rem">📋</div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Firebase</span></div>
-          <div class="project-name">Task Management App</div>
-          <div class="project-desc">A collaborative project management tool with real-time updates, drag-and-drop, and team features.</div>
-          <div class="project-links">
-            <a class="proj-link" href="#">↗ Live Demo</a>
-            <a class="proj-link" href="#">⌥ GitHub</a>
-          </div>
+        <div class="project-info">
+          <div class="project-url">godspeedracing.in</div>
+          <a href="https://godspeedracing.in/" target="_blank" class="project-link">
+            Visit site
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
         </div>
       </div>
-      <div class="project-card fade-up delay-2" data-cat="backend">
-        <div class="project-thumb" style="background:linear-gradient(135deg,#2e1a1a,#ff658422)">
-          <div class="project-thumb-inner" style="font-size:3.5rem">🔌</div>
+
+      <div class="project-card">
+        <div class="project-frame-wrapper">
+          <iframe src="https://martechlogic.com/" title="Martech Logic" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="frame-overlay"></div>
+          <div class="frame-overlay-top" onclick="window.open('https://martechlogic.com/','_blank')"></div>
         </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">Node.js</span><span class="project-tag">Express</span><span class="project-tag">PostgreSQL</span></div>
-          <div class="project-name">REST API Service</div>
-          <div class="project-desc">Scalable RESTful API with JWT auth, rate-limiting, and full CRUD operations for a SaaS product.</div>
-          <div class="project-links">
-            <a class="proj-link" href="#">↗ Docs</a>
-            <a class="proj-link" href="#">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-      <div class="project-card fade-up" data-cat="web">
-        <div class="project-thumb" style="background:linear-gradient(135deg,#1a1e2e,#007aff22)">
-          <div class="project-thumb-inner" style="font-size:3.5rem">📊</div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Chart.js</span><span class="project-tag">Node.js</span></div>
-          <div class="project-name">Analytics Dashboard</div>
-          <div class="project-desc">Interactive data dashboard with real-time charts, filters, and export features for business insights.</div>
-          <div class="project-links">
-            <a class="proj-link" href="#">↗ Live Demo</a>
-            <a class="proj-link" href="#">⌥ GitHub</a>
-          </div>
+        <div class="project-info">
+          <div class="project-url">martechlogic.com</div>
+          <a href="https://martechlogic.com/" target="_blank" class="project-link">
+            Visit site
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
         </div>
       </div>
-      <div class="project-card fade-up delay-1" data-cat="mobile">
-        <div class="project-thumb" style="background:linear-gradient(135deg,#2e2a1a,#ffb10022)">
-          <div class="project-thumb-inner" style="font-size:3.5rem">📱</div>
+
+      <div class="project-card">
+        <div class="project-frame-wrapper">
+          <iframe src="https://salescliff.com/" title="Sales Cliff" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="frame-overlay"></div>
+          <div class="frame-overlay-top" onclick="window.open('https://salescliff.com/','_blank')"></div>
         </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">React Native</span><span class="project-tag">Expo</span></div>
-          <div class="project-name">Mobile Budget App</div>
-          <div class="project-desc">Personal finance tracker with expense categories, budget goals, and visual summaries.</div>
-          <div class="project-links">
-            <a class="proj-link" href="#">↗ Play Store</a>
-            <a class="proj-link" href="#">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-      <div class="project-card fade-up delay-2" data-cat="web">
-        <div class="project-thumb" style="background:linear-gradient(135deg,#1a2a2e,#17a2b822)">
-          <div class="project-thumb-inner" style="font-size:3.5rem">💬</div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Socket.io</span><span class="project-tag">Node.js</span></div>
-          <div class="project-name">Real-Time Chat App</div>
-          <div class="project-desc">WebSocket-powered chat with rooms, private messaging, typing indicators, and file sharing.</div>
-          <div class="project-links">
-            <a class="proj-link" href="#">↗ Live Demo</a>
-            <a class="proj-link" href="#">⌥ GitHub</a>
-          </div>
+        <div class="project-info">
+          <div class="project-url">salescliff.com</div>
+          <a href="https://salescliff.com/" target="_blank" class="project-link">
+            Visit site
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
         </div>
       </div>
+
+      <div class="project-card">
+        <div class="project-frame-wrapper">
+          <iframe src="https://tinkerheadsmarketing.com/" title="Tinkerheads Marketing" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="frame-overlay"></div>
+          <div class="frame-overlay-top" onclick="window.open('https://tinkerheadsmarketing.com/','_blank')"></div>
+        </div>
+        <div class="project-info">
+          <div class="project-url">tinkerheadsmarketing.com</div>
+          <a href="https://tinkerheadsmarketing.com/" target="_blank" class="project-link">
+            Visit site
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-frame-wrapper">
+          <iframe src="https://realitywarehousing.in/" title="Reality Warehousing" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="frame-overlay"></div>
+          <div class="frame-overlay-top" onclick="window.open('https://realitywarehousing.in/','_blank')"></div>
+        </div>
+        <div class="project-info">
+          <div class="project-url">realitywarehousing.in</div>
+          <a href="https://realitywarehousing.in/" target="_blank" class="project-link">
+            Visit site
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-frame-wrapper">
+          <iframe src="https://kavya-industries.com/" title="Kavya Industries" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="frame-overlay"></div>
+          <div class="frame-overlay-top" onclick="window.open('https://kavya-industries.com/','_blank')"></div>
+        </div>
+        <div class="project-info">
+          <div class="project-url">kavya-industries.com</div>
+          <a href="https://kavya-industries.com/" target="_blank" class="project-link">
+            Visit site
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-frame-wrapper">
+          <iframe src="https://abmlogic.com/" title="ABM Logic" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="frame-overlay"></div>
+          <div class="frame-overlay-top" onclick="window.open('https://abmlogic.com/','_blank')"></div>
+        </div>
+        <div class="project-info">
+          <div class="project-url">abmlogic.com</div>
+          <a href="https://abmlogic.com/" target="_blank" class="project-link">
+            Visit site
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-frame-wrapper">
+          <iframe src="https://hrtechlogic.com/" title="HR Tech Logic" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="frame-overlay"></div>
+          <div class="frame-overlay-top" onclick="window.open('https://hrtechlogic.com/','_blank')"></div>
+        </div>
+        <div class="project-info">
+          <div class="project-url">hrtechlogic.com</div>
+          <a href="https://hrtechlogic.com/" target="_blank" class="project-link">
+            Visit site
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
     </div>
-  </div>
-</section>
+  </section>
+
 
 <!-- SERVICES -->
 <section id="services">
@@ -1044,11 +1206,11 @@ footer {
         <div class="service-title">Backend Development</div>
         <div class="service-desc">Robust REST APIs, database design, authentication, and server-side logic with Node.js & Express.</div>
       </div>
-      <div class="service-card fade-up delay-2">
+      <!-- <div class="service-card fade-up delay-2">
         <div class="service-icon">📱</div>
         <div class="service-title">Mobile Apps</div>
         <div class="service-desc">Cross-platform mobile apps using React Native with smooth UI and native-like performance.</div>
-      </div>
+      </div> -->
       <div class="service-card fade-up">
         <div class="service-icon">🎨</div>
         <div class="service-title">UI/UX Design</div>
@@ -1059,83 +1221,84 @@ footer {
         <div class="service-title">Code Review & Consulting</div>
         <div class="service-desc">Technical consulting, code reviews, performance audits, and architecture guidance for your team.</div>
       </div>
-      <div class="service-card fade-up delay-2">
+      <!-- <div class="service-card fade-up delay-2">
         <div class="service-icon">🚀</div>
         <div class="service-title">Deployment & DevOps</div>
         <div class="service-desc">CI/CD setup, Docker containerization, cloud deployment on AWS/Vercel, and server management.</div>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <p class="section-tag fade-up">Get In Touch</p>
-    <h2 class="section-title fade-up delay-1">Let's <span class="gradient-text">Connect</span></h2>
-    <div class="contact-wrap">
-      <div>
-        <p style="color:var(--muted);line-height:1.75;font-size:1rem;margin-bottom:2rem" class="fade-up delay-2">
-          Have a project in mind or just want to chat? I'm always open to new opportunities, collaborations, and interesting conversations. Drop me a message!
-        </p>
-        <div class="contact-info-items">
-          <!-- ✏️ EDIT CONTACT INFO -->
-          <div class="contact-info-item fade-up delay-1">
-            <div class="ci-icon">📧</div>
-            <div>
-              <div class="ci-label">Email</div>
-              <div class="ci-value"><a href="mailto:your@email.com">your@email.com</a></div>
-            </div>
+  <section id="contact">
+    <div class="fade-in">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Let's <span>Connect</span></h2>
+    </div>
+    <div class="contact-grid fade-in">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value"><a href="mailto:dhireshubham9921@gmail.com">dhireshubham9921@gmail.com</a></div>
           </div>
-          <div class="contact-info-item fade-up delay-2">
-            <div class="ci-icon">📍</div>
-            <div>
-              <div class="ci-label">Location</div>
-              <div class="ci-value">Pune, Maharashtra, India</div>
-            </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-value"><a href="tel:+919518550494">+91 9518550494</a></div>
           </div>
-          <div class="contact-info-item fade-up delay-3">
-            <div class="ci-icon">💼</div>
-            <div>
-              <div class="ci-label">LinkedIn</div>
-              <div class="ci-value"><a href="#">linkedin.com/in/shubhamdhire</a></div>
-            </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Location</div>
+            <div class="contact-item-value">Pune, Maharashtra, India</div>
           </div>
-          <div class="contact-info-item fade-up delay-4">
-            <div class="ci-icon">🐙</div>
-            <div>
-              <div class="ci-label">GitHub</div>
-              <div class="ci-value"><a href="#">github.com/shubhamdhire</a></div>
-            </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <div class="contact-item-label">LinkedIn</div>
+            <div class="contact-item-value"><a href="https://www.linkedin.com/in/shubham-dhire/" target="_blank">linkedin.com/in/shubham-dhire</a></div>
           </div>
         </div>
       </div>
-      <div class="fade-up delay-2">
-        <div class="contact-form">
+
+      <div>
+        <div class="contact-form" id="contactForm">
           <div class="form-row">
             <div class="form-group">
-              <label>Your Name</label>
-              <input type="text" id="cf-name" placeholder="John Doe">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-input" placeholder="Your name" id="fname">
             </div>
             <div class="form-group">
-              <label>Your Email</label>
-              <input type="email" id="cf-email" placeholder="john@example.com">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" placeholder="your@email.com" id="femail">
             </div>
           </div>
           <div class="form-group">
-            <label>Subject</label>
-            <input type="text" id="cf-subject" placeholder="Project Inquiry">
+            <label class="form-label">Subject</label>
+            <input type="text" class="form-input" placeholder="Project inquiry, collaboration..." id="fsubject">
           </div>
           <div class="form-group">
-            <label>Message</label>
-            <textarea id="cf-message" placeholder="Tell me about your project..."></textarea>
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Tell me about your project..." id="fmessage"></textarea>
           </div>
-          <button class="btn-submit" onclick="sendMessage()">Send Message →</button>
+          <button class="form-submit" onclick="handleSubmit()">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            Send Message
+          </button>
+          <div class="form-success" id="formSuccess">
+            ✓ Message sent! I'll get back to you within 24 hours.
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 <!-- FOOTER -->
 <footer>
@@ -1263,6 +1426,27 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+</script>
+
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Contact form
+  function handleSubmit() {
+    const name = document.getElementById('fname').value;
+    const email = document.getElementById('femail').value;
+    const subject = document.getElementById('fsubject').value;
+    const message = document.getElementById('fmessage').value;
+    if (!name || !email || !message) { alert('Please fill in the required fields.'); return; }
+    const mailtoLink = `mailto:dhireshubham9921@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message)}`;
+    window.location.href = mailtoLink;
+    document.getElementById('formSuccess').style.display = 'block';
+  }
 </script>
 </body>
 </html>
